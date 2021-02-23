@@ -1,0 +1,46 @@
+
+MVM to Everyone (4:00 PM)
+/**
+ * Our company has recently purchased a Vending Machine hardware. We need to develop a software to work with its API.
+ * Currently, we are selling snacks, our plan is to sell Drinks, Foods, etc. with the newer version of this hardware in future.
+ *
+ * Machine's features:
+ * VM has On/Off switch; Dispense, UP/DOWN button, and a dispense tray
+ * VM has Two Line LED display
+ * VM has CreditCard reader with an API method "process" that accepts two callbacks (succeeded, failed)
+ * (assumption: We will mock payment class. if the payment is "on" it is a success otherwise failure)
+ *
+*
+** Requirements:
+ * VM has can be in any of the following states ON/OFF/SOLD_OUT
+ * SOLD_OUT: When system is on and has no product in the inventory
+ * VM shows one item at a time with up/down button on line 2 (list is cyclic)
+ * VM dispenses a product per each successful payment transaction
+ * VM has a Tray to dispense products
+ * VM will reset to initial state by pressing any key after any payment transaction
+ * VM can show total received money and sold products
+MVM to Everyone (4:01 PM)
+* Enhance SnackVendingMachine
+  * Sample products:
+ ** ("Coke", 1.35, 2);
+ ** ("Gum", 2.25, 4);
+ ** ("Chocolate", 3.50, 3);
+ *
+ * Note:
+ * - If any of the requirements is not clear, make and document your assumption.
+ * - Modularization and Clean code are important
+ * - This assignment must be done TDD approach.
+ * -
+ */
+MVM to Everyone (4:03 PM)
+-----------------------------------------------------------------------------------------------
+|    | Display Line 1             |Display Line 2                   |                         |
+-----------------------------------------------------------------------------------------------
+| ON | Welcome                    |Select a product                 | If has inventory        |
+| ON | Welcome                    |Sold Out                         | If has no inventory     |
+| OFF| [empty]                    |[empty]                          |                         |
+| ON | Press any key to continue  |Payment Failed                   | If payment fails        |
+| ON | Press any key to continue  |Please take your product         | If payment succeeds     |
+| ON | Welcome                    |[product name] $[price]          | If up/down was pressed  |
+| ON | Welcome                    |[product name] $[price] Sold Out | If a product count is 0 |
+---------------------------------------------------------------
